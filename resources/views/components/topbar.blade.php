@@ -139,10 +139,14 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="Header Avatar">
+                            @if (auth()->user()->avatar == 'default.png' || auth()->user()->avatar == 'default.jpg')Add commentMore actions
+                                <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/user-dummy-img.jpg') }}" alt="Header Avatar">
+                            @else
+                                <img class="rounded-circle header-profile-user" src="{{ asset('storage/images/users/' . auth()->user()->avatar) }}" alt="Header Avatar">
+                            @endif
                             <span class="ms-xl-2 text-start">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">thedaamanda</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Administrator</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ auth()->user()->name }}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ auth()->user()->role->name }}</span>
                             </span>
                         </span>
                     </button>

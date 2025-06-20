@@ -7,7 +7,7 @@
                 <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <h3 style="line-height: 65px; color: white; font-family: 'IBM Plex Sans', sans-serif;">MTA</h3>
+                <h3 style="line-height: 65px; color: white; font-family: 'IBM Plex Sans', sans-serif;">SID</h3>
             </span>
         </a>
         <!-- Light Logo-->
@@ -16,7 +16,7 @@
                 <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <h3 style="line-height: 65px; color: white; font-family: 'IBM Plex Sans', sans-serif;">MTA</h3>
+                <h3 style="line-height: 65px; color: white; font-family: 'IBM Plex Sans', sans-serif;">SID</h3>
             </span>
         </a>
         <button type="button" class="btn btn-sm fs-20 header-item float-end btn-vertical-sm-hover p-0" id="vertical-hover">

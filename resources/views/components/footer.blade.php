@@ -4,11 +4,11 @@
             <div class="col-sm-6">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> © MTA
+                </script> © SID
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Muhammad Theda Amanda
+                    Design & Develop by SID Team
                 </div>
             </div>
         </div>

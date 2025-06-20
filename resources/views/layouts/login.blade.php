@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Sistem Informasi Alumni" name="description" />
-        <meta content="MTA" name="author" />
+        <meta content="Sistem Informasi Desa" name="description" />
+        <meta content="SID" name="author" />
 
         <title>{{ $title ?? config('app.name') }}</title>
 

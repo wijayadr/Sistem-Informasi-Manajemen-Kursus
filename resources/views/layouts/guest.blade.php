@@ -13,8 +13,8 @@
     <meta name="description" content="">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Sistem Informasi Alumni" name="description" />
-    <meta content="MTA" name="author" />
+    <meta content="Sistem Informasi Desa" name="description" />
+    <meta content="SID" name="author" />
     <!-- Favicon -->
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/favicon.png') }}">
