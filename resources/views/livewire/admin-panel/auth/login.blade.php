@@ -33,7 +33,7 @@
                         <div class="card-body p-4">
                             <div class="mt-2 text-center">
                                 <h5 class="text-primary">Selamat Datang Kembali !</h5>
-                                <p class="text-muted">Silahkan masuk ke Sistem Informasi Alumni.</p>
+                                <p class="text-muted">Silahkan masuk ke Sistem Informasi Desa.</p>
                             </div>
                             <div class="mt-4 p-2">
                                 <form wire:submit.prevent="login">

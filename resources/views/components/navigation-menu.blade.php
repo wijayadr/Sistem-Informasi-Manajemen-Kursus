@@ -31,27 +31,65 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
-                <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-tachometer-alt">Dashboard</x-nav-link>
+                @if (auth()->user()->role_id == 1)
+                    <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-tachometer-alt">Dashboard</x-nav-link>
 
-                <x-nav-link dropdown="newsMenu" icon="las la-book-reader" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
-                    Kursus
-                    <x-slot name="content">
-                        <x-dropdown id="newsMenu">
-                            <x-nav-link :href="route('admin.news.index')">Kursus</x-nav-link>
-                            <x-nav-link :href="route('admin.categories.index')">Kategori</x-nav-link>
-                        </x-dropdown>
-                    </x-slot>
-                </x-nav-link>
+                    <x-nav-link dropdown="informasiDesaMenu" icon="las la-book-reader" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
+                        Informasi Desa
+                        <x-slot name="content">
+                            <x-dropdown id="informasiDesaMenu">
+                                <x-nav-link :href="route('admin.news.index')">Identitas Desa</x-nav-link>
+                                <x-nav-link :href="route('admin.news.index')">Visi Misi</x-nav-link>
+                                <x-nav-link :href="route('admin.news.index')">Profil Desa</x-nav-link>
+                                <x-nav-link :href="route('admin.news.index')">Sejarah Desa</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Status Desa</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Struktur Desa</x-nav-link>
+                            </x-dropdown>
+                        </x-slot>
+                    </x-nav-link>
 
-                <x-nav-link dropdown="penggunaMenu" icon="lar la-user-circle">
-                    Users
-                    <x-slot name="content">
-                        <x-dropdown id="penggunaMenu">
-                            <x-nav-link :href="route('admin.roles.index')">Role</x-nav-link>
-                            <x-nav-link :href="route('admin.users.index')">Pengguna</x-nav-link>
-                        </x-dropdown>
-                    </x-slot>
-                </x-nav-link>
+                    <x-nav-link dropdown="statistikMenu" icon="las la-chart-pie" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
+                        Statistik
+                        <x-slot name="content">
+                            <x-dropdown id="statistikMenu">
+                                <x-nav-link :href="route('admin.news.index')">Penduduk</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Umur</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Pendidikan</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Pekerjaan</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Agama</x-nav-link>
+                            </x-dropdown>
+                        </x-slot>
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-book">Buku Administrasi Desa</x-nav-link>
+
+                    <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-hands-helping">Bantuan</x-nav-link>
+
+                    <x-nav-link dropdown="adminWebMenu" icon="las la-desktop" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
+                        Admin Web
+                        <x-slot name="content">
+                            <x-dropdown id="adminWebMenu">
+                                <x-nav-link :href="route('admin.news.index')">Artikel</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Kategori</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Media Sosialn</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Slider</x-nav-link>
+                                <x-nav-link :href="route('admin.categories.index')">Teks Berjalan</x-nav-link>
+                            </x-dropdown>
+                        </x-slot>
+                    </x-nav-link>
+
+                    <x-nav-link dropdown="penggunaMenu" icon="lar la-user-circle">
+                        Users
+                        <x-slot name="content">
+                            <x-dropdown id="penggunaMenu">
+                                <x-nav-link :href="route('admin.roles.index')">Role</x-nav-link>
+                                <x-nav-link :href="route('admin.users.index')">Pengguna</x-nav-link>
+                            </x-dropdown>
+                        </x-slot>
+                    </x-nav-link>
+                @elseif(auth()->user()->role_id == 2)
+                @elseif(auth()->user()->role_id == 3)
+                @endif
             </ul>
         </div>
         <!-- Sidebar -->

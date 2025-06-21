@@ -139,7 +139,7 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            @if (auth()->user()->avatar == 'default.png' || auth()->user()->avatar == 'default.jpg')Add commentMore actions
+                            @if (auth()->user()->avatar == 'default.png' || auth()->user()->avatar == 'default.jpg')
                                 <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/user-dummy-img.jpg') }}" alt="Header Avatar">
                             @else
                                 <img class="rounded-circle header-profile-user" src="{{ asset('storage/images/users/' . auth()->user()->avatar) }}" alt="Header Avatar">
