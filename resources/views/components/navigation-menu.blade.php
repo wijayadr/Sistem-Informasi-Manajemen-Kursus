@@ -37,9 +37,9 @@
                     <x-nav-link dropdown="informasiDesaMenu" icon="las la-book-reader" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
                         Informasi Desa
                         <x-slot name="content">
-                            <x-dropdown id="informasiDesaMenu" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.categories.index')">
+                            <x-dropdown id="informasiDesaMenu" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.identity.vision-mission')">
                                 <x-nav-link :href="route('admin.identity.index')" :active="Request::routeIs('admin.identity.index')">Identitas Desa</x-nav-link>
-                                <x-nav-link :href="route('admin.news.index')">Visi Misi</x-nav-link>
+                                <x-nav-link :href="route('admin.identity.vision-mission')" :active="Request::routeIs('admin.identity.vision-mission')">Visi Misi</x-nav-link>
                                 <x-nav-link :href="route('admin.news.index')">Profil Desa</x-nav-link>
                                 <x-nav-link :href="route('admin.news.index')">Sejarah Desa</x-nav-link>
                                 <x-nav-link :href="route('admin.categories.index')">Status Desa</x-nav-link>
