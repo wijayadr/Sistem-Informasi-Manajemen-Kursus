@@ -34,11 +34,11 @@
                 @if (auth()->user()->role_id == 1)
                     <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-tachometer-alt">Dashboard</x-nav-link>
 
-                    <x-nav-link dropdown="informasiDesaMenu" icon="las la-book-reader" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
+                    <x-nav-link dropdown="informasiDesaMenu" icon="las la-book-reader" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
                         Informasi Desa
                         <x-slot name="content">
-                            <x-dropdown id="informasiDesaMenu">
-                                <x-nav-link :href="route('admin.news.index')">Identitas Desa</x-nav-link>
+                            <x-dropdown id="informasiDesaMenu" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.categories.index')">
+                                <x-nav-link :href="route('admin.identity.index')" :active="Request::routeIs('admin.identity.index')">Identitas Desa</x-nav-link>
                                 <x-nav-link :href="route('admin.news.index')">Visi Misi</x-nav-link>
                                 <x-nav-link :href="route('admin.news.index')">Profil Desa</x-nav-link>
                                 <x-nav-link :href="route('admin.news.index')">Sejarah Desa</x-nav-link>

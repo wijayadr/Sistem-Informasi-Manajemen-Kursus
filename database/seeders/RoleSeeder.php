@@ -19,8 +19,13 @@ class RoleSeeder extends Seeder
         ]);
 
         Role::create([
-            'name' => 'Student',
-            'slug' => 'student',
+            'name' => 'Kepala Desa',
+            'slug' => 'kepala-desa',
+        ]);
+
+        Role::create([
+            'name' => 'Sekretaris Desa',
+            'slug' => 'sekretaris-desa',
         ]);
     }
 }

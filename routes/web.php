@@ -39,6 +39,9 @@ Route::prefix('admin-panel')->group(function () {
         // Categories
         Route::get('/categories', \App\Livewire\AdminPanel\Categories\Index::class)->name('admin.categories.index');
 
+        // Identity
+        Route::get('/identity', \App\Livewire\AdminPanel\Identity\Index::class)->name('admin.identity.index');
+
         Route::post('/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
     });
 });
