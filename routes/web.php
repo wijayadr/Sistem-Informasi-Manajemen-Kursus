@@ -47,6 +47,7 @@ Route::prefix('admin-panel')->group(function () {
         // Identity
         Route::get('/identity', \App\Livewire\AdminPanel\Identity\Index::class)->name('admin.identity.index');
         Route::get('/identity/vision-mission', \App\Livewire\AdminPanel\Identity\VisionMission::class)->name('admin.identity.vision-mission');
+        Route::get('/identity/display-message', \App\Livewire\AdminPanel\Identity\DisplayMessage::class)->name('admin.identity.display-message');
 
         Route::post('/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
     });

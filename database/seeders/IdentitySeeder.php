@@ -28,6 +28,7 @@ class IdentitySeeder extends Seeder
             'twitter' => 'https://www.x.com/',
             'vision' => 'Membangun desa yang sejahtera.',
             'mission' => 'Meningkatkan infrastruktur dan pelayanan publik.',
+            'display_message' => 'Selamat datang di Desa X, tempat dimana inovasi dan tradisi berpadu untuk kemajuan bersama.',
         ]);
     }
 }

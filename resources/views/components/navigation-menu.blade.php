@@ -64,16 +64,16 @@
 
                     <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-hands-helping">Bantuan</x-nav-link>
 
-                    <x-nav-link dropdown="adminWebMenu" icon="las la-desktop" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit') || Request::routeIs('admin.events.index') || Request::routeIs('admin.events.create') || Request::routeIs('admin.events.edit')">
+                    <x-nav-link dropdown="adminWebMenu" icon="las la-desktop" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit') || Request::routeIs('admin.events.index') || Request::routeIs('admin.events.create') || Request::routeIs('admin.events.edit') || Request::routeIs('admin.identity.display-message')">
                         Admin Web
                         <x-slot name="content">
-                            <x-dropdown id="adminWebMenu" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit') || Request::routeIs('admin.events.index') || Request::routeIs('admin.events.create') || Request::routeIs('admin.events.edit')">
+                            <x-dropdown id="adminWebMenu" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit') || Request::routeIs('admin.events.index') || Request::routeIs('admin.events.create') || Request::routeIs('admin.events.edit') || Request::routeIs('admin.identity.display-message')">
                                 <x-nav-link :href="route('admin.news.index')" :active="Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">Artikel</x-nav-link>
                                 <x-nav-link :href="route('admin.categories.index')" :active="Request::routeIs('admin.categories.index')">Kategori</x-nav-link>
                                 <x-nav-link :href="route('admin.events.index')" :active="Request::routeIs('admin.events.index') || Request::routeIs('admin.events.create') || Request::routeIs('admin.events.edit')">Agenda</x-nav-link>
                                 <x-nav-link :href="route('admin.categories.index')">Media Sosial</x-nav-link>
                                 <x-nav-link :href="route('admin.categories.index')">Slider</x-nav-link>
-                                <x-nav-link :href="route('admin.categories.index')">Teks Berjalan</x-nav-link>
+                                <x-nav-link :href="route('admin.identity.display-message')" :active="Request::routeIs('admin.identity.display-message')">Teks Berjalan</x-nav-link>
                             </x-dropdown>
                         </x-slot>
                     </x-nav-link>

@@ -26,5 +26,6 @@ class Identity extends Model
         'twitter',
         'vision',
         'mission',
+        'display_message',
     ];
 }

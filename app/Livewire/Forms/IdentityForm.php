@@ -54,6 +54,9 @@ class IdentityForm extends Form
     #[Rule(['required', 'string'])]
     public ?string $mission = null;
 
+    #[Rule(['required', 'string'])]
+    public ?string $display_message = null;
+
     public function setIdentity(Identity $identity): void
     {
         $this->identity = $identity;
@@ -71,6 +74,7 @@ class IdentityForm extends Form
         $this->twitter = $identity->twitter;
         $this->vision = $identity->vision;
         $this->mission = $identity->mission;
+        $this->display_message = $identity->display_message;
     }
 
     public function update(): void
