@@ -36,6 +36,11 @@ Route::prefix('admin-panel')->group(function () {
         Route::get('/news/create', \App\Livewire\AdminPanel\News\Form::class)->name('admin.news.create');
         Route::get('/news/edit/{news}', \App\Livewire\AdminPanel\News\Form::class)->name('admin.news.edit');
 
+        // Events
+        Route::get('/events', \App\Livewire\AdminPanel\Events\Index::class)->name('admin.events.index');
+        Route::get('/events/create', \App\Livewire\AdminPanel\Events\Form::class)->name('admin.events.create');
+        Route::get('/events/edit/{event}', \App\Livewire\AdminPanel\Events\Form::class)->name('admin.events.edit');
+
         // Categories
         Route::get('/categories', \App\Livewire\AdminPanel\Categories\Index::class)->name('admin.categories.index');
 
