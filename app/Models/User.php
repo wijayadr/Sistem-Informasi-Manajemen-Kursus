@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(News::class, 'created_by');
     }
+
+    public function event()
+    {
+        return $this->hasOne(Event::class, 'created_by');
+    }
 }
