@@ -1,4 +1,4 @@
-@props(['error', 'disabled' => false])
+@props(['error', 'disabled' => false, 'time' => false])
 
 @php
 $classes = ($error ?? false)
@@ -11,60 +11,119 @@ $classes = ($error ?? false)
 @push('script')
     <script>
         document.addEventListener("livewire:initialized", () => {
-            let el = $('#{{ $attributes['id'] }}')
+            let el = document.getElementById('{{ $attributes['id'] }}');
 
-            function initFlatpickr() {
-                el.flatpickr({
-                    altInput: true,
-                    altFormat: "j F Y",
-                    dateFormat: "Y-m-d",
-                    locale: {
-                        firstDayOfWeek: 1,
-                        weekdays: {
-                            shorthand: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
-                            longhand: [
-                                "Minggu",
-                                "Senin",
-                                "Selasa",
-                                "Rabu",
-                                "Kamis",
-                                "Jumat",
-                                "Sabtu",
-                            ],
+            @if ($time)
+                console.log('Initializing flatpickr with date and time support');
+
+                function initFlatpickr() {
+                   flatpickr(el, {
+                        altInput: true,
+                        altFormat: "j F Y H:i",
+                        enableTime: true,
+                        dateFormat: "Y-m-d H:i",
+                        time_24hr: true,
+                        locale: {
+                            firstDayOfWeek: 1,
+                            weekdays: {
+                                shorthand: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+                                longhand: [
+                                    "Minggu",
+                                    "Senin",
+                                    "Selasa",
+                                    "Rabu",
+                                    "Kamis",
+                                    "Jumat",
+                                    "Sabtu",
+                                ],
+                            },
+                            months: {
+                                shorthand: [
+                                    "Jan",
+                                    "Feb",
+                                    "Mar",
+                                    "Apr",
+                                    "Mei",
+                                    "Jun",
+                                    "Jul",
+                                    "Agu",
+                                    "Sep",
+                                    "Okt",
+                                    "Nov",
+                                    "Des",
+                                ],
+                                longhand: [
+                                    "Januari",
+                                    "Februari",
+                                    "Maret",
+                                    "April",
+                                    "Mei",
+                                    "Juni",
+                                    "Juli",
+                                    "Agustus",
+                                    "September",
+                                    "Oktober",
+                                    "November",
+                                    "Desember",
+                                ],
+                            },
                         },
-                        months: {
-                            shorthand: [
-                                "Jan",
-                                "Feb",
-                                "Mar",
-                                "Apr",
-                                "Mei",
-                                "Jun",
-                                "Jul",
-                                "Agu",
-                                "Sep",
-                                "Okt",
-                                "Nov",
-                                "Des",
-                            ],
-                            longhand: [
-                                "Januari",
-                                "Februari",
-                                "Maret",
-                                "April",
-                                "Mei",
-                                "Juni",
-                                "Juli",
-                                "Agustus",
-                                "September",
-                                "Oktober",
-                                "November",
-                                "Desember",
-                            ],
+                    })
+                }
+            @else
+                function initFlatpickr() {
+                    flatpickr(el, {
+                        altInput: true,
+                        altFormat: "j F Y",
+                        dateFormat: "Y-m-d",
+                        locale: {
+                            firstDayOfWeek: 1,
+                            weekdays: {
+                                shorthand: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+                                longhand: [
+                                    "Minggu",
+                                    "Senin",
+                                    "Selasa",
+                                    "Rabu",
+                                    "Kamis",
+                                    "Jumat",
+                                    "Sabtu",
+                                ],
+                            },
+                            months: {
+                                shorthand: [
+                                    "Jan",
+                                    "Feb",
+                                    "Mar",
+                                    "Apr",
+                                    "Mei",
+                                    "Jun",
+                                    "Jul",
+                                    "Agu",
+                                    "Sep",
+                                    "Okt",
+                                    "Nov",
+                                    "Des",
+                                ],
+                                longhand: [
+                                    "Januari",
+                                    "Februari",
+                                    "Maret",
+                                    "April",
+                                    "Mei",
+                                    "Juni",
+                                    "Juli",
+                                    "Agustus",
+                                    "September",
+                                    "Oktober",
+                                    "November",
+                                    "Desember",
+                                ],
+                            },
                         },
-                    },
-                })
-            }
+                    })
+                }
+            @endif
 
             initFlatpickr()
 
