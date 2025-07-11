@@ -60,7 +60,7 @@
                         </x-slot>
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-book">Buku Administrasi Desa</x-nav-link>
+                    <x-nav-link :href="route('admin.administrations.regulations.index')" :active="Request::routeIs('admin.administrations.regulations.index')" icon="las la-book">Buku Administrasi Desa</x-nav-link>
 
                     <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-hands-helping">Bantuan</x-nav-link>
 

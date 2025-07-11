@@ -44,6 +44,9 @@ Route::prefix('admin-panel')->group(function () {
         // Categories
         Route::get('/categories', \App\Livewire\AdminPanel\Categories\Index::class)->name('admin.categories.index');
 
+        // Regulations
+        Route::get('/regulations', \App\Livewire\AdminPanel\Administrations\Regulations\Index::class)->name('admin.administrations.regulations.index');
+
         // Identity
         Route::get('/identity', \App\Livewire\AdminPanel\Identity\Index::class)->name('admin.identity.index');
         Route::get('/identity/vision-mission', \App\Livewire\AdminPanel\Identity\VisionMission::class)->name('admin.identity.vision-mission');
