@@ -48,7 +48,11 @@ Route::prefix('admin-panel')->group(function () {
         Route::get('/regulations', \App\Livewire\AdminPanel\Administrations\Regulations\Index::class)->name('admin.administrations.regulations.index');
 
         // Statistics
-        Route::get('/statistics/population', \App\Livewire\AdminPanel\Statistics\Population::class)->name('admin.statistics.population');
+        Route::prefix('statistics')->name('admin.statistics.')->group(function () {
+            Route::get('/population', \App\Livewire\AdminPanel\Statistics\Population::class)->name('population');
+            Route::get('/education', \App\Livewire\AdminPanel\Statistics\Education::class)->name('education');
+            Route::get('/religion', \App\Livewire\AdminPanel\Statistics\Religion::class)->name('religion');
+        });
 
         // Identity
         Route::get('/identity', \App\Livewire\AdminPanel\Identity\Index::class)->name('admin.identity.index');
