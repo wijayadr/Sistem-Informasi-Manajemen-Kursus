@@ -47,11 +47,11 @@
                         </x-slot>
                     </x-nav-link>
 
-                    <x-nav-link dropdown="statistikMenu" icon="las la-chart-pie" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
+                    <x-nav-link dropdown="statistikMenu" icon="las la-chart-pie" :active="Request::routeIs('admin.statistics.population')">
                         Statistik
                         <x-slot name="content">
-                            <x-dropdown id="statistikMenu">
-                                <x-nav-link :href="route('admin.news.index')">Penduduk</x-nav-link>
+                            <x-dropdown id="statistikMenu" :active="Request::routeIs('admin.statistics.population')">
+                                <x-nav-link :href="route('admin.statistics.population')" :active="Request::routeIs('admin.statistics.population')">Penduduk</x-nav-link>
                                 <x-nav-link :href="route('admin.categories.index')">Umur</x-nav-link>
                                 <x-nav-link :href="route('admin.categories.index')">Pendidikan</x-nav-link>
                                 <x-nav-link :href="route('admin.categories.index')">Pekerjaan</x-nav-link>
