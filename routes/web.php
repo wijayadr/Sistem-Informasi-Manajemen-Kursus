@@ -41,6 +41,9 @@ Route::prefix('admin-panel')->group(function () {
         Route::get('/events/create', \App\Livewire\AdminPanel\Events\Form::class)->name('admin.events.create');
         Route::get('/events/edit/{event}', \App\Livewire\AdminPanel\Events\Form::class)->name('admin.events.edit');
 
+        // Sliders
+        Route::get('/sliders', \App\Livewire\AdminPanel\Sliders\Index::class)->name('admin.sliders.index');
+
         // Categories
         Route::get('/categories', \App\Livewire\AdminPanel\Categories\Index::class)->name('admin.categories.index');
 
