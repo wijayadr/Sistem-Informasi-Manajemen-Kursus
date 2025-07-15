@@ -47,18 +47,20 @@
                         </x-slot>
                     </x-nav-link>
 
-                    <x-nav-link dropdown="statistikMenu" icon="las la-chart-pie" :active="Request::routeIs('admin.statistics.population') || Request::routeIs('admin.statistics.education') ||  Request::routeIs('admin.statistics.religion')">
+                    <x-nav-link :href="route('admin.statistics.index')" :active="Request::routeIs('admin.statistics.index')" icon="las la-chart-pie">Statistik</x-nav-link>
+
+                    {{-- <x-nav-link dropdown="statistikMenu" icon="las la-chart-pie" :active="Request::routeIs('admin.statistics.population') || Request::routeIs('admin.statistics.education') ||  Request::routeIs('admin.statistics.religion')">
                         Statistik
                         <x-slot name="content">
                             <x-dropdown id="statistikMenu" :active="Request::routeIs('admin.statistics.population') || Request::routeIs('admin.statistics.education') ||  Request::routeIs('admin.statistics.religion')">
                                 <x-nav-link :href="route('admin.statistics.population')" :active="Request::routeIs('admin.statistics.population')">Penduduk</x-nav-link>
-                                <x-nav-link :href="route('admin.categories.index')">Umur</x-nav-link>
+                                <x-nav-link :href="route('admin.statistics.index')">Umur</x-nav-link>
                                 <x-nav-link :href="route('admin.statistics.education')" :active="Request::routeIs('admin.statistics.education')">Pendidikan</x-nav-link>
                                 <x-nav-link :href="route('admin.categories.index')">Pekerjaan</x-nav-link>
                                 <x-nav-link :href="route('admin.statistics.religion')" :active="Request::routeIs('admin.statistics.religion')">Agama</x-nav-link>
                             </x-dropdown>
                         </x-slot>
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
                     <x-nav-link :href="route('admin.administrations.regulations.index')" :active="Request::routeIs('admin.administrations.regulations.index')" icon="las la-book">Buku Administrasi Desa</x-nav-link>
 

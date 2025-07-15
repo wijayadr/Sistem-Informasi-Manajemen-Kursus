@@ -52,6 +52,9 @@ Route::prefix('admin-panel')->group(function () {
             Route::get('/population', \App\Livewire\AdminPanel\Statistics\Population::class)->name('population');
             Route::get('/education', \App\Livewire\AdminPanel\Statistics\Education::class)->name('education');
             Route::get('/religion', \App\Livewire\AdminPanel\Statistics\Religion::class)->name('religion');
+
+            Route::get('/', \App\Livewire\AdminPanel\Statistics\Index::class)->name('index');
+            Route::get('/{statistic}/edit', \App\Livewire\AdminPanel\Statistics\Edit::class)->name('edit');
         });
 
         // Identity
