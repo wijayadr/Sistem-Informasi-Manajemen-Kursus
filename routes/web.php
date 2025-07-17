@@ -41,6 +41,9 @@ Route::prefix('admin-panel')->group(function () {
         Route::get('/events/create', \App\Livewire\AdminPanel\Events\Form::class)->name('admin.events.create');
         Route::get('/events/edit/{event}', \App\Livewire\AdminPanel\Events\Form::class)->name('admin.events.edit');
 
+        // SDGs Progress
+        Route::get('/sdgs-progress', \App\Livewire\AdminPanel\Sdgs\Progress::class)->name('admin.sdgs.progress');
+
         // Sliders
         Route::get('/sliders', \App\Livewire\AdminPanel\Sliders\Index::class)->name('admin.sliders.index');
 

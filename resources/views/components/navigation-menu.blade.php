@@ -37,11 +37,11 @@
                     <x-nav-link dropdown="informasiDesaMenu" icon="las la-book-reader" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
                         Informasi Desa
                         <x-slot name="content">
-                            <x-dropdown id="informasiDesaMenu" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.identity.vision-mission')">
+                            <x-dropdown id="informasiDesaMenu" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.identity.vision-mission') || Request::routeIs('admin.sdgs.progress')">
                                 <x-nav-link :href="route('admin.identity.index')" :active="Request::routeIs('admin.identity.index')">Identitas Desa</x-nav-link>
                                 <x-nav-link :href="route('admin.identity.vision-mission')" :active="Request::routeIs('admin.identity.vision-mission')">Visi Misi</x-nav-link>
-                                <x-nav-link :href="route('admin.news.index')">Sejarah Desa</x-nav-link>
-                                <x-nav-link :href="route('admin.categories.index')">Status Desa</x-nav-link>
+                                <x-nav-link :href="route('admin.sdgs.progress')" :active="Request::routeIs('admin.sdgs.progress')">SDGs</x-nav-link>
+                                <x-nav-link :href="route('admin.news.index')">IDM</x-nav-link>
                                 <x-nav-link :href="route('admin.categories.index')">Struktur Desa</x-nav-link>
                             </x-dropdown>
                         </x-slot>
