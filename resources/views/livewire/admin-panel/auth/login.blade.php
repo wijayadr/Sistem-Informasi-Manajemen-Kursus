@@ -18,7 +18,7 @@
                     <div class="mt-sm-5 text-white-50 mb-4 text-center">
                         <div>
                             <a href="{{ route('admin.dashboard') }}" class="d-inline-block auth-logo">
-                                <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="20">
+                                <img src="{{ asset('assets/images/logo_pali.png') }}" alt="" height="120">
                             </a>
                         </div>
                     </div>
