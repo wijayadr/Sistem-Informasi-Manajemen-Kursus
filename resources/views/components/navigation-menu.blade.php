@@ -34,15 +34,15 @@
                 @if (auth()->user()->role_id == 1)
                     <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-tachometer-alt">Dashboard</x-nav-link>
 
-                    <x-nav-link dropdown="informasiDesaMenu" icon="las la-book-reader" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit')">
+                    <x-nav-link dropdown="informasiDesaMenu" icon="las la-book-reader" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.identity.vision-mission') || Request::routeIs('admin.sdgs.progress') || Request::routeIs('admin.idm-scores.index')">
                         Informasi Desa
                         <x-slot name="content">
-                            <x-dropdown id="informasiDesaMenu" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.identity.vision-mission') || Request::routeIs('admin.sdgs.progress')">
+                            <x-dropdown id="informasiDesaMenu" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.identity.vision-mission') || Request::routeIs('admin.sdgs.progress') || Request::routeIs('admin.idm-scores.index')">
                                 <x-nav-link :href="route('admin.identity.index')" :active="Request::routeIs('admin.identity.index')">Identitas Desa</x-nav-link>
                                 <x-nav-link :href="route('admin.identity.vision-mission')" :active="Request::routeIs('admin.identity.vision-mission')">Visi Misi</x-nav-link>
                                 <x-nav-link :href="route('admin.sdgs.progress')" :active="Request::routeIs('admin.sdgs.progress')">SDGs</x-nav-link>
-                                <x-nav-link :href="route('admin.news.index')">IDM</x-nav-link>
-                                <x-nav-link :href="route('admin.categories.index')">Struktur Desa</x-nav-link>
+                                <x-nav-link :href="route('admin.idm-scores.index')" :active="Request::routeIs('admin.idm-scores.index')">IDM</x-nav-link>
+                                {{-- <x-nav-link :href="route('admin.categories.index')">Struktur Desa</x-nav-link> --}}
                             </x-dropdown>
                         </x-slot>
                     </x-nav-link>
@@ -64,7 +64,7 @@
 
                     <x-nav-link :href="route('admin.administrations.regulations.index')" :active="Request::routeIs('admin.administrations.regulations.index')" icon="las la-book">Buku Administrasi Desa</x-nav-link>
 
-                    <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-hands-helping">Bantuan</x-nav-link>
+                    {{-- <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-hands-helping">Bantuan</x-nav-link> --}}
 
                     <x-nav-link dropdown="adminWebMenu" icon="las la-desktop" :active="Request::routeIs('admin.categories.index') || Request::routeIs('admin.news.index') || Request::routeIs('admin.news.create') || Request::routeIs('admin.news.edit') || Request::routeIs('admin.events.index') || Request::routeIs('admin.events.create') || Request::routeIs('admin.events.edit') || Request::routeIs('admin.identity.display-message')">
                         Admin Web

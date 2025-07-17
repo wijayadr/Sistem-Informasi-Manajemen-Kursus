@@ -44,6 +44,9 @@ Route::prefix('admin-panel')->group(function () {
         // SDGs Progress
         Route::get('/sdgs-progress', \App\Livewire\AdminPanel\Sdgs\Progress::class)->name('admin.sdgs.progress');
 
+        // IDM Scores
+        Route::get('/idm-scores', \App\Livewire\AdminPanel\IdmScores\Index::class)->name('admin.idm-scores.index');
+
         // Sliders
         Route::get('/sliders', \App\Livewire\AdminPanel\Sliders\Index::class)->name('admin.sliders.index');
 
