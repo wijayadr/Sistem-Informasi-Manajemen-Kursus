@@ -12,9 +12,6 @@
                                         <li class="breadcrumb-trail">
                                             <a href="{{ route('public.home') }}"><span>Home</span></a>
                                         </li>
-                                        <li class="breadcrumb-trail">
-                                            <a href="{{ route('public.news.index') }}"><span>Informasi</span></a>
-                                        </li>
                                         <li class="trail-item">
                                             <span>SDGs</span>
                                         </li>
