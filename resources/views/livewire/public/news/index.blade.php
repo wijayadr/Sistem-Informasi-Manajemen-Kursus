@@ -98,12 +98,12 @@
                                                 </h6>
                                                 <span class="author mb-10 mr-20">
                                                     <i class="fal fa-user-tag"></i>
-                                                    <a href="#">{{ $newsItem->creator->name ?? 'Admin' }}</a>
+                                                    <a href="#"> {{ $newsItem->creator->name ?? 'Admin' }}</a>
                                                 </span>
-                                                <span class="author mb-10">
+                                                {{-- <span class="author mb-10">
                                                     <i class="fal fa-eye"></i>
                                                     <a href="#">{{ $newsItem->views ?? 0 }} kali</a>
-                                                </span>
+                                                </span> --}}
                                                 <div class="smblog-foot pt-15">
                                                     <div class="post-readmore">
                                                         <a href="{{ route('public.news.detail', $newsItem->slug) }}">

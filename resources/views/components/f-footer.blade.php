@@ -7,13 +7,12 @@
                         <div class="col-xl-12">
                             <div class="footer__links text-center mb-25">
                                 <p>
-                                    <a href="#">Beranda</a>
-                                    <a href="#">Profil Desa</a>
-                                    <a href="#">Berita Desa</a>
-                                    <a href="#">Galeri</a>
-                                    <a href="#">TP-PKK</a>
-                                    <a href="#">Koperasi Desa-Kelurahan Merah Putih</a>
-                                    <a href="#">Badan Permusyawaratan Desa</a>
+                                    <a href="{{ route('public.home') }}">Home</a>
+                                    <a href="{{ route('public.about') }}">Profil Desa</a>
+                                    <a href="{{ route('public.news.index') }}">Berita Desa</a>
+                                    <a href="berita.html">Infografis</a>
+                                    <a href="berita.html">IDM</a>
+                                    <a href="{{ route('public.contact') }}">Kontak</a>
                                 </p>
                             </div>
                             <div class="copy-right-area text-center">

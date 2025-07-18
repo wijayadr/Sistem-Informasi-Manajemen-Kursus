@@ -17,8 +17,12 @@ Route::get('/', \App\Livewire\Public\Home\Index::class)->name('public.home');
 
 Route::get('/profil-desa', \App\Livewire\Public\About\Index::class)->name('public.about');
 
-Route::get('/infomasi', \App\Livewire\Public\News\Index::class)->name('public.news.index');
-Route::get('/infomasi/{news:slug}', \App\Livewire\Public\News\Detail::class)->name('public.news.detail');
+Route::prefix('informasi')->name('public.news.')->group(function () {
+    Route::get('/', \App\Livewire\Public\News\Index::class)->name('index');
+    Route::get('/{news:slug}', \App\Livewire\Public\News\Detail::class)->name('detail');
+});
+
+Route::get('/kontak-kami', \App\Livewire\Public\Contact\Index::class)->name('public.contact');
 
 Route::prefix('admin-panel')->group(function () {
     Route::get('/login', App\Livewire\AdminPanel\Auth\Login::class)->name('admin.login');

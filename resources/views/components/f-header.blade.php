@@ -18,7 +18,7 @@
                                         <li><a href="{{ route('public.news.index') }}">Berita Desa</a></li>
                                         <li><a href="berita.html">Infografis</a></li>
                                         <li><a href="berita.html">IDM</a></li>
-                                        <li><a href="berita.html">Kontak</a></li>
+                                        <li><a href="{{ route('public.contact') }}">Kontak</a></li>
                                         {{-- <li><a href="galeri.html">Galeri</a></li>
                                         <li><a href="bumndes.html">BUMDes</a></li>
                                         <li><a href="tppkk.html">TP-PKK</a></li>
@@ -80,12 +80,10 @@
                         <div class="col-xl-4 col-lg-5 col-md-8 col-sm-8">
                             <div class="header-action">
                                 <div class="block-userlink">
-                                    <a class="icon-link" href="#" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#productModalId">
+                                    <a class="icon-link" href="{{ route('admin.login') }}" type="button">
                                         <i class="fal fa-user-lock"></i>
                                         <span class="text">
-                                            <span class="sub"> Login</span>
-                                            Dashboard </span>
+                                            <span class="sub"> Login</span> Dashboard </span>
                                     </a>
                                 </div>
                                 <div class="block-wishlist action">
@@ -217,7 +215,7 @@
                 <li><a href="{{ route('public.news.index') }}">Berita Desa</a></li>
                 <li><a href="berita.html">Infografis</a></li>
                 <li><a href="berita.html">IDM</a></li>
-                <li><a href="berita.html">Kontak</a></li>
+                <li><a href="{{ route('public.contact') }}">Kontak</a></li>
             </ul>
         </nav>
     </div>
