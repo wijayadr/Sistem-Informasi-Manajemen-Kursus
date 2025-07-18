@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h5 class="fs-13 mt-3">Logo Sekolah</h5>
+                                <h5 class="fs-13 mt-3">Logo</h5>
                                 <div wire:loading wire:target="form.logo">Uploading...</div>
                                 <x-input-error :messages="$errors->get('form.logo')" />
                             </div>
