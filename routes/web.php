@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect(route('admin.login'));
-});
+Route::get('/', \App\Livewire\Public\Home\Index::class)->name('public.home');
+
+Route::get('/profil-desa', \App\Livewire\Public\About\Index::class)->name('public.about');
+
+Route::get('/infomasi', \App\Livewire\Public\News\Index::class)->name('public.news.index');
+Route::get('/infomasi/{news:slug}', \App\Livewire\Public\News\Detail::class)->name('public.news.detail');
 
 Route::prefix('admin-panel')->group(function () {
     Route::get('/login', App\Livewire\AdminPanel\Auth\Login::class)->name('admin.login');

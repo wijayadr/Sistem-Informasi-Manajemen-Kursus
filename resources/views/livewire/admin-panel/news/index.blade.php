@@ -3,7 +3,7 @@
         <div class="card" id="newList">
             <div class="card-header border-bottom-dashed">
                 <div class="d-flex align-items-center">
-                    <h5 class="card-title mb-0 flex-grow-1">Berita</h5>
+                    <h5 class="card-title mb-0 flex-grow-1">Artikel</h5>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-2 flex-wrap">
                             <a href="{{ route('admin.news.create') }}" class="btn btn-info w-100 waves-effect waves-light">

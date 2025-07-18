@@ -3,10 +3,12 @@
 namespace App\Livewire\AdminPanel\News;
 
 use App\Models\Master\News;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
-#[Title('Berita')]
+#[Title('Artikel')]
 class Index extends Component
 {
     #[Url()]
