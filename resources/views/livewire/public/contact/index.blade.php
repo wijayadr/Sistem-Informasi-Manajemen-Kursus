@@ -34,7 +34,7 @@
             <div class="row mb-25">
                 <div class="col-xl-12">
                     <div class="abs-section-title text-center">
-                        <span>LOCATION STORE</span>
+                        <span>INFORMASI</span>
                         <h4>
                             {{ $identity->name }}
                         </h4>

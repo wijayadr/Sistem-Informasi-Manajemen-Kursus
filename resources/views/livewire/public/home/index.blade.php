@@ -116,7 +116,7 @@
                             </div>
                             <div class="product__item clr-8 swiper-slide">
                                 <div class="box-item items-pds">
-                                    <a href="berita.html">
+                                    <a href="{{ route('public.news.index') }}">
                                         <i class="fal fa-newspaper"></i>
                                         Berita <br> Informasi Desa
                                     </a>
@@ -124,7 +124,7 @@
                             </div>
                             <div class="product__item clr-6 swiper-slide">
                                 <div class="box-item items-pds">
-                                    <a href="#">
+                                    <a href="{{ route('public.sdgs') }}">
                                         <i class="fal fa-analytics"></i>
                                         Status <br> SDGs
                                     </a>
@@ -132,7 +132,7 @@
                             </div>
                             <div class="product__item clr-7 swiper-slide">
                                 <div class="box-item items-pds">
-                                    <a href="gol-darah.html">
+                                    <a href="{{ route('public.idm.index') }}">
                                         <i class="fal fa-chart-line"></i>
                                         IDM
                                     </a>
@@ -153,7 +153,6 @@
                     <div class="bs-button bs-button-next"><i class="fal fa-chevron-right"></i></div>
                 </div>
             </div>
-
         </div>
     </section>
     <!-- features__area-end -->
@@ -165,34 +164,41 @@
                 <div class="col-xl-12">
                     <div class="section__head d-flex justify-content-between mb-10">
                         <div class="section__title">
-                            <h5 class="st-titile">Artikel Terkini</h5>
+                            <h5 class="st-titile">Informasi Terkini</h5>
                         </div>
                         <div class="product__nav-tab">
                             <ul class="nav nav-tabs" id="flast-sell-tab" role="tablist">
+                                <!-- Tab for All Information -->
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="computer-tab" data-bs-toggle="tab"
-                                        data-bs-target="#computer" type="button" role="tab" aria-controls="computer"
-                                        aria-selected="false">Berita Desa</button>
+                                    <button
+                                        class="nav-link {{ $activeTab === 'all' ? 'active' : '' }}"
+                                        id="all-tab"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="all"
+                                        aria-selected="{{ $activeTab === 'all' ? 'true' : 'false' }}"
+                                        wire:click="setActiveTab('all')"
+                                    >
+                                        Semua Informasi
+                                    </button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="samsung-tab" data-bs-toggle="tab"
-                                        data-bs-target="#samsung" type="button" role="tab"
-                                        aria-selected="false">Usaha Warga</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="htc-tab" data-bs-toggle="tab" data-bs-target="#htc"
-                                        type="button" role="tab" aria-selected="false">Kegiatan Desa</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="nokia-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nokia" type="button" role="tab" aria-selected="false">Olah
-                                        Raga</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="cell-tab" data-bs-toggle="tab"
-                                        data-bs-target="#cell" type="button" role="tab"
-                                        aria-selected="true">Pengumuman</button>
-                                </li>
+
+                                <!-- Tabs for Each Category -->
+                                @foreach($categories as $category)
+                                    <li class="nav-item" role="presentation">
+                                        <button
+                                            class="nav-link {{ $activeTab === $category->slug ? 'active' : '' }}"
+                                            id="{{ $category->slug }}-tab"
+                                            type="button"
+                                            role="tab"
+                                            aria-controls="{{ $category->slug }}"
+                                            aria-selected="{{ $activeTab === $category->slug ? 'true' : 'false' }}"
+                                            wire:click="setActiveTab('{{ $category->slug }}')"
+                                        >
+                                            {{ $category->nama }}
+                                        </button>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -201,565 +207,58 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="tab-content" id="flast-sell-tabContent">
-                        <div class="tab-pane fade active show" id="computer" role="tabpanel"
-                            aria-labelledby="computer-tab">
+                        <!-- Single Tab Pane for All Content -->
+                        <div class="tab-pane fade active show" id="news-content" role="tabpanel">
                             <div class="row pt-20">
+                                @forelse($news as $item)
                                 <div class="col-xl-3 col-lg-6">
                                     <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
                                         <div class="smblog-thum">
                                             <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/1.jpg') }}" alt=""></a>
+                                                <a href="{{ route('public.news.detail', $item->slug) }}">
+                                                    <img src="{{ $item->thumbnail ? asset('storage/images/news/' . $item->thumbnail) : asset('frontend/img/default-news.jpg') }}" alt="{{ $item->title }}">
+                                                </a>
                                             </div>
                                             <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
+                                                <a href="#">{{ $item->category->name ?? 'Berita Desa' }}</a>
                                             </div>
                                         </div>
                                         <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
+                                            <h6>
+                                                <a href="{{ route('public.news.detail', $item->slug) }}">
+                                                    {{ Str::limit($item->title, 60) }}
+                                                </a>
+                                            </h6>
+                                            <span class="author mb-10 mr-20">
+                                                <i class="fal fa-user-tag"></i>
+                                                <a href="#">{{ $item->creator->name ?? 'Admin' }}</a>
+                                            </span>
                                             <div class="smblog-foot pt-15">
                                                 <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
+                                                    <a href="{{ route('public.news.detail', $item->slug) }}">
+                                                        <i class="fal fa-book-reader mr-10"></i>
+                                                        Selengkapnya
+                                                        <span class="icon"></span>
+                                                    </a>
                                                 </div>
                                                 <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
+                                                    <a href="#">
+                                                        {{ $item->created_at ? $item->created_at->format('M d, Y') : 'Jan 01, 2024' }}
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/4.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                @empty
+                                <div class="col-xl-12">
+                                    <div class="text-center py-5">
+                                        <i class="fal fa-newspaper fa-3x text-muted mb-3"></i>
+                                        <h5 class="text-muted">Tidak ada berita tersedia</h5>
+                                        <p class="text-muted">Belum ada berita yang dipublikasikan untuk kategori ini.</p>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/3.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/4.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/4.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/1.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/4.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/3.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="samsung" role="tabpanel" aria-labelledby="samsung-tab">
-                            <div class="row pt-20">
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/1.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/4.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/3.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="htc" role="tabpanel" aria-labelledby="htc-tab">
-                            <div class="row pt-20">
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/1.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/3.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nokia" role="tabpanel" aria-labelledby="nokia-tab">
-                            <div class="row pt-20">
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/1.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/4.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/3.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="cell" role="tabpanel" aria-labelledby="cell-tab">
-                            <div class="row pt-20">
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/1.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6">
-                                    <div class="single-smblog mb-30" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="smblog-thum">
-                                            <div class="blog-image w-img">
-                                                <a href="#"><img src="{{ asset('frontend/img/ts-img/3.jpg') }}" alt=""></a>
-                                            </div>
-                                            <div class="blog-tag blog-tag-2">
-                                                <a href="#">Berita Desa</a>
-                                            </div>
-                                        </div>
-                                        <div class="smblog-content smblog-content-3">
-                                            <h6><a href="detail-berita.html">Delicious Mixed Grilled Food For The
-                                                    Weekend With The Family And Friends</a></h6>
-                                            <span class="author mb-10 mr-20"><i class="fal fa-user-tag"></i> <a
-                                                    href="#">Admin</a></span>
-                                            <span class="author mb-10"><i class="fal fa-eye"></i> <a href="#">123
-                                                    kali</a></span>
-                                            <div class="smblog-foot pt-15">
-                                                <div class="post-readmore">
-                                                    <a href="detail-berita.html"><i
-                                                            class="fal fa-book-reader mr-10"></i> Selengkapnya <span
-                                                            class="icon"></span></a>
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#">Jan 24, 2022</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -769,403 +268,52 @@
     </section>
     <!-- topsell__area-end -->
 
-    <!-- topsell__area-start -->
-    <section class="topsell__area-1 pt-30 pb-60">
+    <!-- cta-area-start -->
+    <section class="cta-area d-ldark-bg pt-55 pb-10">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section__head d-flex justify-content-center mb-10">
-                        <div class="section__title">
-                            <h5 class="st-titile">Aparatur Desa</h5>
+            <div class="row justify-content-between">
+                <div class="col-lg-12">
+                    <div class="cta-item cta-item-d mb-30">
+                        <h5 class="cta-title">Media Sosial Kami</h5>
+                        <p>Dapatkan informasi terbaru dan berita terkini dari {{ $identity->name }} melalui media sosial kami. Kami aktif di berbagai platform untuk memastikan Anda selalu terhubung dengan kami.</p>
+                        <div class="cta-social">
+                            <div class="social-icon">
+                                <a href="{{ $identity->facebook }}#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{ $identity->twitter }}" class="twitter"><i class="fab fa-tiktok"></i></a>
+                                <a href="{{ $identity->youtube }}" class="youtube"><i class="fab fa-youtube"></i></a>
+                                <a href="{{ $identity->instagram }}" class="instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="product-bs-slider">
-                    <div class="product-slider swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="categories__item p-relative w-img mb-30 swiper-slide m-2" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="categories__img b-radius-2">
-                                    <a href="#">
-                                        <img src="{{ asset('frontend/img/ts-img/user1.avif') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="categories__content">
-                                    <h6><a href="#">Nama Aparatur Desa</a></h6>
-                                    <p>Jabatan</p>
-                                    <a href="#" class="cart-btn-6 mt-20">Hadir di Kantor</a>
-                                </div>
-                            </div>
-                            <div class="categories__item p-relative w-img mb-30 swiper-slide m-2" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="categories__img b-radius-2">
-                                    <a href="#">
-                                        <img src="{{ asset('frontend/img/ts-img/user2.avif') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="categories__content">
-                                    <h6><a href="#">Nama Aparatur Desa</a></h6>
-                                    <p>Jabatan</p>
-                                    <a href="#" class="cart-btn-5 mt-20">Tidak ada di Kantor</a>
-                                </div>
-                            </div>
-
-                            <div class="categories__item p-relative w-img mb-30 swiper-slide m-2" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="categories__img b-radius-2">
-                                    <a href="#">
-                                        <img src="{{ asset('frontend/img/ts-img/user3.avif') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="categories__content">
-                                    <h6><a href="#">Nama Aparatur Desa</a></h6>
-                                    <p>Jabatan</p>
-                                    <a href="#" class="cart-btn-5 mt-20">Tidak ada di Kantor</a>
-                                </div>
-                            </div>
-
-                            <div class="categories__item p-relative w-img mb-30 swiper-slide m-2" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="categories__img b-radius-2">
-                                    <a href="#">
-                                        <img src="{{ asset('frontend/img/ts-img/user4.avif') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="categories__content">
-                                    <h6><a href="#">Nama Aparatur Desa</a></h6>
-                                    <p>Jabatan</p>
-                                    <a href="#" class="cart-btn-5 mt-20">Tidak ada di Kantor</a>
-                                </div>
-                            </div>
-
-                            <div class="categories__item p-relative w-img mb-30 swiper-slide m-2" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="categories__img b-radius-2">
-                                    <a href="#">
-                                        <img src="{{ asset('frontend/img/ts-img/user5.avif') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="categories__content">
-                                    <h6><a href="#">Nama Aparatur Desa</a></h6>
-                                    <p>Jabatan</p>
-                                    <a href="#" class="cart-btn-5 mt-20">Tidak ada di Kantor</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- If we need navigation buttons -->
-                    <div class="bs-button bs-button-prev"><i class="fal fa-chevron-left"></i></div>
-                    <div class="bs-button bs-button-next"><i class="fal fa-chevron-right"></i></div>
                 </div>
             </div>
         </div>
+
     </section>
-    <!-- topsell__area-end -->
+    <!-- cta-area-end -->
 
-    <!-- recomand-product-area-start -->
-    <section class="recomand-product-area pt-60">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section__head d-flex justify-content-center mb-10">
-                        <div class="section__title">
-                            <h5 class="st-titile">Transparasi Anggaran</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-4 pb-50 pt-20">
-                    <div class="coupon-accordion">
-                        <!-- ACCORDION START -->
-                        <h3>APBDesa 2024 Pelaksanaan</h3>
-                        <div class="item mb-10" data-aos="fade-up" data-aos-delay="100">
-                            <h5>Pendapatan Desa</h5>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Realisasi</span>
-                                <span>Anggaran</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Rp. 887.000.029</span>
-                                <span>Rp. 1.887.000.029</span>
-                            </div>
-                            <div class="progress mt-3">
-                                <div class="progress-bar progress-bar-gradient" role="progressbar"
-                                    style="width: 0%;" id="realisasiBar">
-                                    0%
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item mb-10" data-aos="fade-up" data-aos-delay="100">
-                            <h5>Pembiayaan Desa</h5>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Realisasi</span>
-                                <span>Anggaran</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Rp. 887.000.029</span>
-                                <span>Rp. 1.887.000.029</span>
-                            </div>
-                            <div class="progress mt-3">
-                                <div class="progress-bar progress-bar-gradient" role="progressbar"
-                                    style="width: 0%;" id="realisasiBar2">
-                                    0%
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item mb-10" data-aos="fade-up" data-aos-delay="100">
-                            <h5>Belanja Desa</h5>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Realisasi</span>
-                                <span>Anggaran</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Rp. 887.000.029</span>
-                                <span>Rp. 1.887.000.029</span>
-                            </div>
-                            <div class="progress mt-3">
-                                <div class="progress-bar progress-bar-gradient" role="progressbar"
-                                    style="width: 0%;" id="realisasiBar3">
-                                    0%
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ACCORDION END -->
-                    </div>
-                </div>
-                <div class="col-xl-4 pb-50 pt-20">
-                    <div class="coupon-accordion">
-                        <!-- ACCORDION START -->
-                        <h3>APBDesa 2024 Pendapatan</h3>
-                        <div class="item mb-10" data-aos="fade-up" data-aos-delay="100">
-                            <h5>Hasil Usaha Desa</h5>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Realisasi</span>
-                                <span>Anggaran</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Rp. 887.000.029</span>
-                                <span>Rp. 1.887.000.029</span>
-                            </div>
-                            <div class="progress mt-3">
-                                <div class="progress-bar progress-bar-gradient" role="progressbar"
-                                    style="width: 0%;" id="realisasiBar4">
-                                    0%
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item mb-10" data-aos="fade-up" data-aos-delay="100">
-                            <h5>Dana Desa</h5>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Realisasi</span>
-                                <span>Anggaran</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Rp. 887.000.029</span>
-                                <span>Rp. 1.887.000.029</span>
-                            </div>
-                            <div class="progress mt-3">
-                                <div class="progress-bar progress-bar-gradient" role="progressbar"
-                                    style="width: 0%;" id="realisasiBar5">
-                                    0%
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item mb-10" data-aos="fade-up" data-aos-delay="100">
-                            <h5>Alokasi Dana Desa</h5>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Realisasi</span>
-                                <span>Anggaran</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Rp. 887.000.029</span>
-                                <span>Rp. 1.887.000.029</span>
-                            </div>
-                            <div class="progress mt-3">
-                                <div class="progress-bar progress-bar-gradient" role="progressbar"
-                                    style="width: 0%;" id="realisasiBar6">
-                                    0%
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ACCORDION END -->
-                    </div>
-                </div>
-                <div class="col-xl-4 pb-50 pt-20">
-                    <div class="coupon-accordion">
-                        <!-- ACCORDION START -->
-                        <h3>APBDesa 2024 Pembelanjaan</h3>
-                        <div class="item mb-10" data-aos="fade-up" data-aos-delay="100">
-                            <h5>Bid. Penyelenggaraan Pemerintah Desa</h5>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Realisasi</span>
-                                <span>Anggaran</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Rp. 887.000.029</span>
-                                <span>Rp. 1.887.000.029</span>
-                            </div>
-                            <div class="progress mt-3">
-                                <div class="progress-bar progress-bar-gradient" role="progressbar"
-                                    style="width: 0%;" id="realisasiBar7">
-                                    0%
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item mb-10" data-aos="fade-up" data-aos-delay="100">
-                            <h5>Bid. Pelaksanaan Pembangunan Desa</h5>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Realisasi</span>
-                                <span>Anggaran</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Rp. 887.000.029</span>
-                                <span>Rp. 1.887.000.029</span>
-                            </div>
-                            <div class="progress mt-3">
-                                <div class="progress-bar progress-bar-gradient" role="progressbar"
-                                    style="width: 0%;" id="realisasiBar8">
-                                    0%
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item mb-10" data-aos="fade-up" data-aos-delay="100">
-                            <h5>Bid. Pembinaan Kemasyarakatan Desa</h5>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Realisasi</span>
-                                <span>Anggaran</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="margin-bottom: 0 !important;">
-                                <span>Rp. 887.000.029</span>
-                                <span>Rp. 1.887.000.029</span>
-                            </div>
-                            <div class="progress mt-3">
-                                <div class="progress-bar progress-bar-gradient" role="progressbar"
-                                    style="width: 0%;" id="realisasiBar9">
-                                    0%
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ACCORDION END -->
-                    </div>
-                </div>
-            </div>
+    <!-- Loading Indicator -->
+    <div wire:loading class="text-center py-3">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
-    </section>
-    <!-- recomand-product-area-end -->
-
-    <!-- featured-start -->
-    <section class="featured light-bg pt-50 pb-40">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section__head d-flex justify-content-center mb-10">
-                        <div class="section__title">
-                            <h5 class="st-titile">Statistik Desa</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-40">
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="services-item mb-30" data-aos="fade-up" data-aos-delay="100">
-                        <div class="services-icon mb-25">
-                            <i class="fal fa-users"></i>
-                        </div>
-                        <h6>Total Penduduk Desa</h6>
-                        <div class="s-count-number">
-                            <span class="count" data-target="809765">0</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="services-item mb-30" data-aos="fade-up" data-aos-delay="100">
-                        <div class="services-icon mb-25">
-                            <i class="fal fa-male"></i>
-                        </div>
-                        <h6>Penduduk Laki-Laki</h6>
-                        <div class="s-count-number">
-                            <span class="count" data-target="406755">0</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="services-item mb-30" data-aos="fade-up" data-aos-delay="100">
-                        <div class="services-icon mb-25">
-                            <i class="fal fa-female"></i>
-                        </div>
-                        <h6>Penduduk Perempuan</h6>
-                        <div class="s-count-number">
-                            <span class="count" data-target="403010">0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-20">
-                <div class="col-xl-6 col-lg-12">
-                    <div id="pendudukChart" style="height: 525px;" data-aos="fade-up" data-aos-delay="100"></div>
-                </div>
-                <div class="col-xl-6 col-lg-12">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12">
-                            <div class="banner__item p-relative w-img mb-30" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="banner__img">
-                                    <a href="data-wilayah.html"><img src="{{ asset('frontend/img/ts-img/wilayah.jpg') }}" alt=""></a>
-                                </div>
-                                <a href="data-wilayah.html" type="button"
-                                    class="cart-btn product-modal-sidebar-open-btn d-flex align-items-center justify-content-center w-100">
-                                    Data Wilayah
-                                </a>
-
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12">
-                            <div class="banner__item p-relative w-img mb-30" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="banner__img">
-                                    <a href="pendidikan.html"><img src="{{ asset('frontend/img/ts-img/OIP.jpg') }}" alt=""></a>
-                                </div>
-                                <a href="pendidikan.html" type="button"
-                                    class="cart-btn product-modal-sidebar-open-btn d-flex align-items-center justify-content-center w-100">
-                                    Data Pendidikan
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12">
-                            <div class="banner__item p-relative w-img mb-30" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="banner__img">
-                                    <a href="pekerjaan.html"><img src="{{ asset('frontend/img/ts-img/pekerjaan.jpg') }}" alt=""></a>
-                                </div>
-                                <a href="pekerjaan.html" type="button"
-                                    class="cart-btn product-modal-sidebar-open-btn d-flex align-items-center justify-content-center w-100">
-                                    Data Pekerjaan
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12">
-                            <div class="banner__item p-relative w-img mb-30" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="banner__img">
-                                    <a href="usia.html"><img src="{{ asset('frontend/img/ts-img/usia.webp') }}" alt=""></a>
-                                </div>
-                                <a href="usia.html" type="button"
-                                    class="cart-btn product-modal-sidebar-open-btn d-flex align-items-center justify-content-center w-100">
-                                    Data Usia
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
-    <!-- featured-end -->
+    </div>
 </div>
+
+@push('script')
+<script>
+document.addEventListener('livewire:initialized', () => {
+    // Handle tab transitions
+    Livewire.on('tabChanged', function() {
+        // Add fade effect during tab change
+        const tabContent = document.getElementById('news-content');
+        tabContent.classList.add('fade');
+
+        setTimeout(() => {
+            tabContent.classList.remove('fade');
+            tabContent.classList.add('show');
+        }, 150);
+    });
+});
+</script>
+@endpush
