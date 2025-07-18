@@ -15,10 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Livewire\Public\Home\Index::class)->name('public.home');
 Route::get('/profil-desa', \App\Livewire\Public\About\Index::class)->name('public.about');
+Route::get('/statistik', \App\Livewire\Public\Statistics\Index::class)->name('public.statistics');
 
 Route::prefix('informasi')->name('public.news.')->group(function () {
     Route::get('/', \App\Livewire\Public\News\Index::class)->name('index');
     Route::get('/{news:slug}', \App\Livewire\Public\News\Detail::class)->name('detail');
+});
+
+Route::prefix('idm')->name('public.idm.')->group(function () {
+    Route::get('/', \App\Livewire\Public\Idm\Index::class)->name('index');
+    Route::get('/{idm_score:year}', \App\Livewire\Public\Idm\Detail::class)->name('detail');
 });
 
 Route::get('/sdgs', \App\Livewire\Public\Sdgs\Index::class)->name('public.sdgs');
