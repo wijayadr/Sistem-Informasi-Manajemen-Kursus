@@ -17,6 +17,7 @@
                                         <li><a href="{{ route('public.about') }}">Profil Desa</a></li>
                                         <li><a href="{{ route('public.news.index') }}">Berita Desa</a></li>
                                         <li><a href="berita.html">Infografis</a></li>
+                                        <li><a href="{{ route('public.sdgs') }}">SDGs</a></li>
                                         <li><a href="berita.html">IDM</a></li>
                                         <li><a href="{{ route('public.contact') }}">Kontak</a></li>
                                         {{-- <li><a href="galeri.html">Galeri</a></li>
@@ -214,6 +215,7 @@
                 <li><a href="{{ route('public.about') }}">Profil Desa</a></li>
                 <li><a href="{{ route('public.news.index') }}">Berita Desa</a></li>
                 <li><a href="berita.html">Infografis</a></li>
+                <li><a href="{{ route('public.sdgs') }}">SDGs</a></li>
                 <li><a href="berita.html">IDM</a></li>
                 <li><a href="{{ route('public.contact') }}">Kontak</a></li>
             </ul>

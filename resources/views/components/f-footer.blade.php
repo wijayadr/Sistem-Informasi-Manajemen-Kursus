@@ -11,6 +11,7 @@
                                     <a href="{{ route('public.about') }}">Profil Desa</a>
                                     <a href="{{ route('public.news.index') }}">Berita Desa</a>
                                     <a href="berita.html">Infografis</a>
+                                    <a href="{{ route('public.sdgs') }}">SDGs</a>
                                     <a href="berita.html">IDM</a>
                                     <a href="{{ route('public.contact') }}">Kontak</a>
                                 </p>

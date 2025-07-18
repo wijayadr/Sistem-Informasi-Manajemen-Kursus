@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', \App\Livewire\Public\Home\Index::class)->name('public.home');
-
 Route::get('/profil-desa', \App\Livewire\Public\About\Index::class)->name('public.about');
 
 Route::prefix('informasi')->name('public.news.')->group(function () {
@@ -22,6 +21,7 @@ Route::prefix('informasi')->name('public.news.')->group(function () {
     Route::get('/{news:slug}', \App\Livewire\Public\News\Detail::class)->name('detail');
 });
 
+Route::get('/sdgs', \App\Livewire\Public\Sdgs\Index::class)->name('public.sdgs');
 Route::get('/kontak-kami', \App\Livewire\Public\Contact\Index::class)->name('public.contact');
 
 Route::prefix('admin-panel')->group(function () {
