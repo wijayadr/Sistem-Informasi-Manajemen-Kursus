@@ -17,6 +17,8 @@ class LetterRequest extends Model
         'email',
         'purpose',
         'request_status',
+        'file',
+        'file_signed',
         'admin_notes',
         'submitted_at',
         'completed_at'

@@ -253,10 +253,11 @@
                             <i class="fas fa-check-circle text-success fa-3x mb-3"></i>
                             <h5 class="text-success mb-3">Permohonan Selesai!</h5>
                             <p class="text-muted mb-4">Surat Anda sudah siap untuk diunduh.</p>
-                            <a href="{{ route('public.letters.download', $letterRequest->tracking_number) }}"
+                            <a href="{{ asset('storage/files/signed-letters/' . $letterRequest->file_signed) }}"
                                class="btn btn-success btn-lg"
-                               wire:loading.attr="disabled"
-                               wire:target="downloadLetter">
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               download>
                                 <i class="fas fa-download me-2"></i>
                                 Unduh Surat
                             </a>
@@ -269,3 +270,97 @@
     </section>
     @endif
 </div>
+
+@push('style')
+    <style>
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #dee2e6;
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-marker {
+        position: absolute;
+        left: -22px;
+        top: 5px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid white;
+        box-shadow: 0 0 0 2px #dee2e6;
+    }
+
+    .timeline-item.active .timeline-marker {
+        box-shadow: 0 0 0 2px #0d6efd;
+        transform: scale(1.2);
+    }
+
+    .timeline-content {
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 15px;
+        margin-left: 15px;
+    }
+
+    .timeline-item.active .timeline-content {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 1px rgba(13, 110, 253, 0.25);
+    }
+
+    /* Card hover effects */
+    .card {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    }
+
+    /* Button loading animation */
+    .btn:disabled {
+        cursor: not-allowed;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .timeline {
+            padding-left: 20px;
+        }
+
+        .timeline-marker {
+            left: -15px;
+        }
+
+        .timeline-content {
+            margin-left: 5px;
+        }
+
+        .display-5 {
+            font-size: 2rem !important;
+        }
+    }
+    </style>
+@endpush

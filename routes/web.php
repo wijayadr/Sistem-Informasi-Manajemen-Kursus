@@ -83,6 +83,23 @@ Route::prefix('admin-panel')->group(function () {
             Route::get('/{statistic}/edit', \App\Livewire\AdminPanel\Statistics\Edit::class)->name('edit');
         });
 
+        // Letter Management Routes for Secretary
+        Route::prefix('letters/secretary')->name('admin.letters.secretary.')->group(function () {
+            Route::get('/', App\Livewire\AdminPanel\Letters\SecretaryIndex::class)->name('index');
+            Route::get('/{id}/detail', App\Livewire\AdminPanel\Letters\SecretaryDetail::class)->name('detail');
+        });
+
+        Route::prefix('letters/headvillage')->name('admin.letters.head-village.')->group(function () {
+            Route::get('/', App\Livewire\AdminPanel\Letters\HeadVillageIndex::class)->name('index');
+            Route::get('/{id}/detail', App\Livewire\AdminPanel\Letters\HeadVillageDetail::class)->name('detail');
+        });
+
+        // Letter Management Routes for Head Village
+        // Route::prefix('letters/headvillage')->name('letters.headvillage.')->group(function () {
+        //     Route::get('/', App\Livewire\AdminPanel\Letters\HeadVillageIndex::class)->name('index');
+        //     Route::get('/{id}/detail', App\Livewire\AdminPanel\Letters\HeadVillageDetail::class)->name('detail');
+        // });
+
         // Identity
         Route::get('/identity', \App\Livewire\AdminPanel\Identity\Index::class)->name('admin.identity.index');
         Route::get('/identity/vision-mission', \App\Livewire\AdminPanel\Identity\VisionMission::class)->name('admin.identity.vision-mission');
