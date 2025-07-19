@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             RegulationCategorySeeder::class,
             StatisticSeeder::class,
             SdgsSeeder::class,
+            LetterSeeder::class,
         ]);
     }
 }
