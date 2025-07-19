@@ -10,6 +10,7 @@
                                     <a href="{{ route('public.home') }}">Home</a>
                                     <a href="{{ route('public.about') }}">Profil Desa</a>
                                     <a href="{{ route('public.news.index') }}">Berita Desa</a>
+                                    <a href="{{ route('public.letters.index') }}">Surat Desa</a>
                                     <a href="{{ route('public.statistics') }}">Infografis</a>
                                     <a href="{{ route('public.sdgs') }}">SDGs</a>
                                     <a href="{{ route('public.idm.index') }}">IDM</a>
@@ -17,8 +18,8 @@
                                 </p>
                             </div>
                             <div class="copy-right-area text-center">
-                                <p>Copyright © <span>Pemerintah Daerah Kabupaten Ogan Ilir</span> All Rights
-                                    Reserved. Powered by <a href="#"><span class="main-color">Diskominfo</span></a>
+                                <p>Copyright ©  {{ date('Y') }} <span>Universitas Bina Darma</span> All Rights
+                                    Reserved. Powered by <a href="#"><span class="main-color">Creator</span></a>
                                 </p>
                             </div>
                         </div>

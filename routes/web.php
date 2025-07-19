@@ -27,6 +27,10 @@ Route::prefix('idm')->name('public.idm.')->group(function () {
     Route::get('/{idm_score:year}', \App\Livewire\Public\Idm\Detail::class)->name('detail');
 });
 
+Route::get('/surat-desa', \App\Livewire\Public\Letters\Index::class)->name('public.letters.index');
+Route::get('/surat-desa/{letter_type}', \App\Livewire\Public\Letters\Detail::class)->name('public.letters.detail');
+Route::get('/tracking-surat-desa', \App\Livewire\Public\Letters\Tracking::class)->name('public.letters.tracking');
+
 Route::get('/sdgs', \App\Livewire\Public\Sdgs\Index::class)->name('public.sdgs');
 Route::get('/kontak-kami', \App\Livewire\Public\Contact\Index::class)->name('public.contact');
 
