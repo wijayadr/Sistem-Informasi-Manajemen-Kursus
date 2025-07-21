@@ -108,7 +108,7 @@
                         <div class="swiper-wrapper">
                             <div class="product__item clr-1 swiper-slide">
                                 <div class="box-item items-pds">
-                                    <a href="data-wilayah.html">
+                                    <a href="{{ route('public.regulations.index') }}">
                                         <i class="fal fa-book"></i>
                                         Buku <br> Administrasi Desa
                                     </a>
@@ -135,6 +135,14 @@
                                     <a href="{{ route('public.idm.index') }}">
                                         <i class="fal fa-chart-line"></i>
                                         IDM
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product__item clr-8 swiper-slide">
+                                <div class="box-item items-pds">
+                                    <a href="{{ route('public.letters.tracking') }}">
+                                        <i class="fal fa-file-search"></i>
+                                        Tracking <br> Surat Desa
                                     </a>
                                 </div>
                             </div>

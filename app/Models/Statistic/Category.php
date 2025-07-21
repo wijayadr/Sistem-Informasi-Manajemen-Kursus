@@ -23,11 +23,19 @@ class Category extends Model
         'value' => 'integer',
     ];
 
+    // Relationships
     public function statistic(): BelongsTo
     {
         return $this->belongsTo(Statistic::class);
     }
 
+    // Scopes
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('category');
+    }
+
+    // Attributes
     public function getPercentageAttribute()
     {
         $total = $this->statistic->total_value;

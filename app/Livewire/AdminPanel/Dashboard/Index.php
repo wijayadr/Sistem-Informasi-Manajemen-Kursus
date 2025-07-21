@@ -2,6 +2,7 @@
 
 namespace App\Livewire\AdminPanel\Dashboard;
 
+use App\Models\Letter\LetterRequest;
 use App\Models\Master\Event;
 use App\Models\Master\News;
 use App\Models\Master\Slider;
@@ -22,6 +23,7 @@ class Index extends Component
             'users' => User::all()->count(),
             'sliders' => Slider::all()->count(),
             'statistics' => Statistic::all()->count(),
+            'letters' => LetterRequest::all()->count(),
         ];
 
         return view('livewire.admin-panel.dashboard.index', compact('data'));

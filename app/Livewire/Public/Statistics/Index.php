@@ -18,39 +18,43 @@ class Index extends Component
 
     public function mount()
     {
-        // Load all active statistics with their categories
+        // Load all active statistics with their categories, ordered
         $this->statistics = Statistic::active()
-            ->with(['categories' => function ($query) {
-                $query->orderBy('value', 'desc');
-            }])
+            // ->ordered()
+            ->with('categories')
             ->get();
 
-        // Calculate total population from age statistics if available
-        $ageStatistic = $this->statistics->where('type', 'age')->first();
-        if ($ageStatistic) {
-            $this->totalPopulation = $ageStatistic->categories->sum('value');
-        }
+        // Calculate population data
+        $this->calculatePopulationData();
+    }
 
-        // Set default values if no data (you can adjust these based on your needs)
-        if ($this->totalPopulation == 0) {
-            $this->totalPopulation = 1270; // From the HTML table
+    private function calculatePopulationData()
+    {
+        // Get age statistics for population calculation
+        $ageStatistic = $this->statistics->where('type', 'age')->first();
+
+        if ($ageStatistic && $ageStatistic->total_value > 0) {
+            $this->totalPopulation = $ageStatistic->total_value;
+
+            // You can implement gender calculation based on your data structure
+            // For now, using default distribution
+            $this->malePopulation = round($this->totalPopulation * 0.48);
+            $this->femalePopulation = $this->totalPopulation - $this->malePopulation;
+        } else {
+            // Default values if no data
+            $this->totalPopulation = 1270;
             $this->malePopulation = 614;
             $this->femalePopulation = 656;
         }
     }
 
-    public function getStatisticByType($type)
+    public function getStatisticsByType($type)
     {
         return $this->statistics->where('type', $type)->first();
     }
 
     public function render()
     {
-        return view('livewire.public.statistics.index', [
-            'ageStatistic' => $this->getStatisticByType('age'),
-            'educationStatistic' => $this->getStatisticByType('education'),
-            'jobStatistic' => $this->getStatisticByType('job'),
-            'religionStatistic' => $this->getStatisticByType('religion'),
-        ]);
+        return view('livewire.public.statistics.index');
     }
 }

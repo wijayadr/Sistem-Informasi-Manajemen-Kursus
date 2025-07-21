@@ -91,7 +91,7 @@
                         </div>
                         <div class="avatar-sm flex-shrink-0">
                             <span class="avatar-title bg-soft-danger rounded fs-3">
-                                <i class="bx bx bx-user text-danger"></i>
+                                <i class="bx bx-user text-danger"></i>
                             </span>
                         </div>
                     </div>
@@ -116,7 +116,32 @@
                         </div>
                         <div class="avatar-sm flex-shrink-0">
                             <span class="avatar-title bg-soft-success rounded fs-3">
-                                <i class="bx bx bx-pie-chart-alt-2 text-success"></i>
+                                <i class="bx bx-pie-chart-alt-2 text-success"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+
+        <div class="col-xl-3 col-md-6">
+            <!-- card -->
+            <div class="card card-animate">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1 overflow-hidden">
+                            <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Total Surat Desa</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end justify-content-between mt-4">
+                        <div>
+                            <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{ $data['letters'] }}">{{ $data['letters'] }}</span>
+                            </h4>
+                            <a href="{{ route('admin.letters.index') }}" class="text-decoration-underline text-muted">Lihat semua surat desa</a>
+                        </div>
+                        <div class="avatar-sm flex-shrink-0">
+                            <span class="avatar-title bg-soft-secondary rounded fs-3">
+                                <i class="bx bx-envelope text-secondary"></i>
                             </span>
                         </div>
                     </div>
