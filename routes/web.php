@@ -31,6 +31,7 @@ Route::get('/surat-desa', \App\Livewire\Public\Letters\Index::class)->name('publ
 Route::get('/surat-desa/{letter_type}', \App\Livewire\Public\Letters\Detail::class)->name('public.letters.detail');
 Route::get('/tracking-surat-desa', \App\Livewire\Public\Letters\Tracking::class)->name('public.letters.tracking');
 
+Route::get('/regulasi', \App\Livewire\Public\Regulations\Index::class)->name('public.regulations.index');
 Route::get('/sdgs', \App\Livewire\Public\Sdgs\Index::class)->name('public.sdgs');
 Route::get('/kontak-kami', \App\Livewire\Public\Contact\Index::class)->name('public.contact');
 
@@ -81,6 +82,12 @@ Route::prefix('admin-panel')->group(function () {
 
             Route::get('/', \App\Livewire\AdminPanel\Statistics\Index::class)->name('index');
             Route::get('/{statistic}/edit', \App\Livewire\AdminPanel\Statistics\Edit::class)->name('edit');
+        });
+
+        // Letter Management Routes
+        Route::prefix('letters')->name('admin.letters.')->group(function () {
+            Route::get('/', App\Livewire\AdminPanel\Letters\Index::class)->name('index');
+            Route::get('/{id}/detail', App\Livewire\AdminPanel\Letters\Detail::class)->name('detail');
         });
 
         // Letter Management Routes for Secretary
