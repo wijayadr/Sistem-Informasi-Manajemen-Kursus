@@ -14,6 +14,6 @@ class Category extends Model
 
     public function regulations()
     {
-        return $this->hasMany(Regulation::class, 'category_id');
+        return $this->hasMany(Regulation::class, 'regulation_category_id');
     }
 }
