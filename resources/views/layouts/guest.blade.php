@@ -21,7 +21,7 @@
     <meta content="SID" name="author" />
 
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/img/favicon.ico') }}">
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('frontend/css/preloader.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
