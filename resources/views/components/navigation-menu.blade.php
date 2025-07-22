@@ -31,7 +31,7 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
-                @if (auth()->user()->role_id == 1)
+                @if (in_array(auth()->user()->role_id, [1, 2, 3]))
                     <x-nav-link :href="route('admin.dashboard')" :active="Request::routeIs('admin.dashboard')" icon="las la-tachometer-alt">Dashboard</x-nav-link>
 
                     <x-nav-link dropdown="informasiDesaMenu" icon="las la-book-reader" :active="Request::routeIs('admin.identity.index') || Request::routeIs('admin.identity.vision-mission') || Request::routeIs('admin.sdgs.progress') || Request::routeIs('admin.idm-scores.index')">
@@ -49,12 +49,16 @@
 
                     <x-nav-link :href="route('admin.statistics.index')" :active="Request::routeIs('admin.statistics.index')" icon="las la-chart-pie">Statistik</x-nav-link>
 
-                    <x-nav-link dropdown="suratDesaMenu" icon="las la-chart-pie" :active="Request::routeIs('admin.statistics.population') || Request::routeIs('admin.statistics.education') ||  Request::routeIs('admin.statistics.religion')">
+                    <x-nav-link dropdown="suratDesaMenu" icon="las la-envelope" :active="Request::routeIs('admin.statistics.population') || Request::routeIs('admin.statistics.education') ||  Request::routeIs('admin.statistics.religion')">
                         Surat Desa
                         <x-slot name="content">
-                            <x-dropdown id="suratDesaMenu" :active="Request::routeIs('admin.letters.secretary.index') || Request::routeIs('admin.letters.head-village.index')">
-                                <x-nav-link :href="route('admin.letters.secretary.index')" :active="Request::routeIs('admin.letters.secretary.index')">Daftar Pengajuan</x-nav-link>
-                                <x-nav-link :href="route('admin.letters.head-village.index')" :active="Request::routeIs('admin.letters.head-village.index')">Daftar Permintaan Surat</x-nav-link>
+                            <x-dropdown id="suratDesaMenu" :active="Request::routeIs('admin.letters.index') || Request::routeIs('admin.letters.detail') || Request::routeIs('admin.letters.secretary.index') || Request::routeIs('admin.letters.head-village.index') || Request::routeIs('admin.letters.secretary.detail') || Request::routeIs('admin.letters.head-village.detail')">
+                                <x-nav-link :href="route('admin.letters.index')" :active="Request::routeIs('admin.letters.index') || Request::routeIs('admin.letters.detail')">Daftar Surat Desa</x-nav-link>
+                                @if (auth()->user()->role_id == 2)
+                                    <x-nav-link :href="route('admin.letters.head-village.index')" :active="Request::routeIs('admin.letters.head-village.index') || Request::routeIs('admin.letters.head-village.detail')">Tanda Tangan Surat</x-nav-link>
+                                @elseif (auth()->user()->role_id == 3)
+                                    <x-nav-link :href="route('admin.letters.secretary.index')" :active="Request::routeIs('admin.letters.secretary.index') || Request::routeIs('admin.letters.secretary.detail')">Daftar Pengajuan Surat</x-nav-link>
+                                @endif
                             </x-dropdown>
                         </x-slot>
                     </x-nav-link>
@@ -74,17 +78,17 @@
                         </x-slot>
                     </x-nav-link>
 
-                    <x-nav-link dropdown="penggunaMenu" icon="lar la-user-circle">
-                        Users
-                        <x-slot name="content">
-                            <x-dropdown id="penggunaMenu">
-                                <x-nav-link :href="route('admin.roles.index')">Role</x-nav-link>
-                                <x-nav-link :href="route('admin.users.index')">Pengguna</x-nav-link>
-                            </x-dropdown>
-                        </x-slot>
-                    </x-nav-link>
-                @elseif(auth()->user()->role_id == 2)
-                @elseif(auth()->user()->role_id == 3)
+                    @if (auth()->user()->role_id == 1)
+                        <x-nav-link dropdown="penggunaMenu" icon="lar la-user-circle">
+                            Users
+                            <x-slot name="content">
+                                <x-dropdown id="penggunaMenu">
+                                    {{-- <x-nav-link :href="route('admin.roles.index')">Role</x-nav-link> --}}
+                                    <x-nav-link :href="route('admin.users.index')">Pengguna</x-nav-link>
+                                </x-dropdown>
+                            </x-slot>
+                        </x-nav-link>
+                    @endif
                 @endif
             </ul>
         </div>
