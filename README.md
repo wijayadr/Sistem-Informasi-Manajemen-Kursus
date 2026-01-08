@@ -1,254 +1,403 @@
-# 📚 Sistem Informasi Manajemen Kursus
+# Sistem Informasi Desa
 
 <div align="center">
 
-![Laravel](https://img.shields.io/badge/Laravel-10.10+-FF2D20?style=flat-square&logo=laravel)
-![PHP](https://img.shields.io/badge/PHP-8.1+-777BB4?style=flat-square&logo=php)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square)
+![Laravel](https://img.shields.io/badge/Laravel-10.x-FF2D20?style=for-the-badge&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.1+-777BB4?style=for-the-badge&logo=php)
+![Livewire](https://img.shields.io/badge/Livewire-3-FB70A9?style=for-the-badge&logo=livewire)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-**Sistem Informasi Manajemen Kursus** adalah aplikasi web modern yang membantu institusi pendidikan mengelola data kursus, siswa, dan desa dengan fitur lengkap dan antarmuka yang intuitif.
+**Sistem Informasi Desa** adalah platform manajemen terintegrasi yang dirancang khusus untuk membantu pemerintah desa mengelola data penduduk, kegiatan, surat menyurat, dan informasi publik secara efisien dan transparan.
 
-[🌐 Demo](#) • [📖 Dokumentasi](#) • [🐛 Lapor Bug](https://github.com/wijayadr/Sistem-Informasi-Manajemen-Kursus/issues) • [💬 Diskusi](https://github.com/wijayadr/Sistem-Informasi-Manajemen-Kursus/discussions)
+[Dokumentasi](https://github.com/wijayadr/sistem-informasi-desa#dokumentasi) • [Instalasi](#instalasi) • [Fitur](#fitur-utama) • [Lisensi](#lisensi)
 
 </div>
 
 ---
 
-## 🎯 Tentang Proyek
+## Tentang Proyek
 
-Sistem Informasi Manajemen Kursus adalah solusi terintegrasi yang dirancang untuk memudahkan pengelolaan data di tingkat desa. Aplikasi ini menyediakan modul komprehensif untuk mengelola:
+Sistem Informasi Desa adalah solusi manajemen data komprehensif yang membantu pemerintah desa dalam:
 
-- 👥 **Data Penduduk & Identitas** - Manajemen profil penduduk lengkap
-- 📖 **Manajemen Kursus** - Pendaftaran, penjadwalan, dan pelacakan peserta
-- 📅 **Event Management** - Perencanaan dan pengelolaan acara desa
-- 📰 **Berita & Informasi** - Publikasi berita dan pengumuman desa
-- 📊 **Analytics & Reporting** - Dashboard interaktif dan laporan komprehensif
-- 📋 **Regulasi & Kebijakan** - Manajemen dokumen dan peraturan desa
-- 🎯 **SDGS Integration** - Tracking progress terhadap Sustainable Development Goals
+- **Manajemen Data Penduduk** - Pencatatan identitas, profil, dan data demografis penduduk
+- **Manajemen Surat-Menyurat** - Penerbitan dan pendistribusian surat keterangan dan dokumen resmi
+- **Kalender Kegiatan** - Perencanaan dan publikasi acara desa
+- **Berita & Pengumuman** - Penyebarluasan informasi penting kepada masyarakat
+- **Laporan & Analitik** - Dashboard komprehensif dengan visualisasi data
+- **Manajemen Regulasi** - Penyimpanan dan publikasi peraturan desa
+- **Tracking SDGs** - Monitoring capaian Sustainable Development Goals
 
-## ✨ Fitur Utama
+## Fitur Utama
 
-### 🎨 Antarmuka Modern
-- Desain responsif yang bekerja di semua perangkat (desktop, tablet, mobile)
-- Dashboard intuitif dengan visualisasi data real-time
-- Dark mode untuk kenyamanan pengguna malam hari
+### Manajemen Data Terintegrasi
+- Database terpusat untuk semua data penduduk dan kegiatan
+- Sistem validasi data yang ketat
+- Audit trail untuk setiap perubahan data
+- Export data dalam format Excel dan PDF
 
-### 🔐 Keamanan
-- Autentikasi berbasis role dan permission
+### Antarmuka Pengguna
+- Desain responsif untuk desktop, tablet, dan mobile
+- Dashboard dengan visualisasi data real-time
+- User experience yang intuitif dan mudah digunakan
+- Multi-language support
+
+### Keamanan & Akses
+- Sistem autentikasi berbasis role-based access control (RBAC)
 - Enkripsi data sensitif
-- CSRF protection dan input validation
-- API Security dengan Sanctum
+- Protection terhadap serangan CSRF dan SQL injection
+- API documentation lengkap dengan authentication
 
-### ⚡ Performa
-- Optimized database queries
-- Caching strategy untuk response cepat
-- Lazy loading untuk images dan components
-
-### 🔌 Integrasi Lanjutan
-- Livewire 3 untuk real-time interactivity tanpa page refresh
-- Export ke Excel/PDF untuk laporan
+### Performa & Skalabilitas
 - API RESTful untuk integrasi eksternal
+- Multi-tenant ready dengan data isolation
 
-### 📱 Multi-tenant Ready
-- Manajemen multiple institusi/desa
-- Isolated data per tenant
-- Custom branding per institusi
+## Teknologi Stack
 
-## 🚀 Quick Start
+| Layer | Technology |
+|-------|-----------|
+| **Backend** | Laravel 10.x, PHP 8.1+ |
+| **Frontend** | Livewire 3, Blade Templates, Tailwind CSS |
+| **Database** | MySQL 8.0+, Eloquent ORM |
+| **Real-time** | Livewire Components |
+| **API** | Laravel Sanctum |
+| **Task Scheduling** | Laravel Scheduler |
+| **Build Tools** | Vite, npm |
 
-### Prerequisites
+## Instalasi & Setup
+
+### Prasyarat Sistem
+
+Pastikan Anda memiliki:
 - PHP 8.1 atau lebih tinggi
-- Composer
-- Node.js & npm
+- Composer (PHP package manager)
+- Node.js 16+ dan npm
 - MySQL 8.0 atau MariaDB 10.4+
 - Git
 
-### Instalasi
+### Langkah-langkah Instalasi
 
-1. **Clone Repository**
+#### 1. Clone Repository
+
 ```bash
-git clone https://github.com/wijayadr/Sistem-Informasi-Manajemen-Kursus.git
-cd Sistem-Informasi-Manajemen-Kursus
+git clone https://github.com/wijayadr/sistem-informasi-desa.git
+cd sistem-informasi-desa
 ```
 
-2. **Install Dependencies**
+#### 2. Install Dependencies
+
 ```bash
-# PHP Dependencies
+# Install PHP dependencies
 composer install
 
-# JavaScript Dependencies
+# Install Node.js dependencies
 npm install
 ```
 
-3. **Setup Environment**
+#### 3. Konfigurasi Environment
+
 ```bash
-# Copy environment file
+# Copy file environment
 cp .env.example .env
 
 # Generate application key
 php artisan key:generate
 ```
 
-4. **Configure Database**
-Edit file `.env` dan atur koneksi database:
+#### 4. Setup Database
+
+Edit file `.env` dengan detail database Anda:
+
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=sistem_kursus
+DB_DATABASE=sistem_informasi_desa
 DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-5. **Run Migrations & Seeders**
+#### 5. Jalankan Database Migrations
+
 ```bash
-# Jalankan migrations
+# Eksekusi migrations
 php artisan migrate
 
-# (Opsional) Jalankan seeders untuk dummy data
+# (Opsional) Seed database dengan data dummy
 php artisan db:seed
 ```
 
-6. **Build Assets**
+#### 6. Build Frontend Assets
+
 ```bash
-# Development
+# Development dengan hot reload
 npm run dev
 
-# Production
+# Production build
 npm run build
 ```
 
-7. **Start Server**
+#### 7. Mulai Server Aplikasi
+
 ```bash
 php artisan serve
 ```
 
-Aplikasi akan tersedia di `http://localhost:8000`
+Aplikasi akan tersedia di: **http://localhost:8000**
 
-## 📖 Dokumentasi
-
-Dokumentasi lengkap tersedia di [docs/](docs/) folder:
-
-- [Instalasi & Setup](docs/INSTALLATION.md)
-- [Panduan User](docs/USER_GUIDE.md)
-- [API Documentation](docs/API.md)
-- [Contribusi Guidelines](CONTRIBUTING.md)
-- [Changelog](CHANGELOG.md)
-
-## 🛠️ Struktur Project
+## Struktur Folder
 
 ```
+sistem-informasi-desa/
 ├── app/
 │   ├── Http/
-│   │   └── Controllers/          # Request handlers
-│   ├── Models/                   # Eloquent models
-│   ├── Livewire/                 # Livewire components
-│   └── Utilities/                # Helper functions
+│   │   ├── Controllers/           # Request handlers & business logic
+│   │   ├── Middleware/            # HTTP middleware
+│   │   └── Kernel.php             # HTTP kernel configuration
+│   ├── Models/                    # Eloquent models
+│   │   ├── User.php
+│   │   ├── Letter/                # Letter-related models
+│   │   ├── Master/                # Master data models
+│   │   ├── Regulation/            # Regulation models
+│   │   └── Sdgs/                  # SDGs tracking models
+│   ├── Livewire/                  # Livewire components
+│   │   ├── AdminPanel/            # Admin dashboard components
+│   │   ├── Forms/                 # Form components
+│   │   └── Public/                # Public-facing components
+│   ├── Utilities/                 # Helper functions
+│   └── Providers/                 # Service providers
 ├── database/
-│   ├── migrations/               # Database schemas
-│   ├── factories/                # Model factories
-│   └── seeders/                  # Database seeders
+│   ├── migrations/                # Database migrations
+│   ├── seeders/                   # Database seeders
+│   └── factories/                 # Model factories
 ├── resources/
-│   ├── views/                    # Blade templates
-│   ├── css/                      # Stylesheets
-│   └── js/                       # JavaScript files
+│   ├── views/                     # Blade templates
+│   ├── css/                       # Stylesheets
+│   └── js/                        # JavaScript files
 ├── routes/
-│   ├── web.php                   # Web routes
-│   └── api.php                   # API routes
-├── tests/                        # Unit & Feature tests
-└── config/                       # Configuration files
+│   ├── web.php                    # Web routes
+│   ├── api.php                    # API routes
+│   └── console.php                # Console commands
+├── config/                        # Configuration files
+├── public/                        # Public assets
+└── tests/                         # Unit & Feature tests
 ```
 
-## 🔧 Konfigurasi
+## Dokumentasi
 
-### Environment Variables
-Konfigurasi penting di `.env`:
-- `APP_NAME` - Nama aplikasi
-- `APP_URL` - URL aplikasi
-- `DB_*` - Database credentials
-- `MAIL_*` - Email configuration
-- `CACHE_DRIVER` - Cache driver (redis/file)
+Dokumentasi lebih lanjut:
 
-### Features Configuration
-Edit `config/` untuk mengaktifkan/menonaktifkan fitur sesuai kebutuhan.
+- [API Reference](docs/API.md)
+- [User Guide](docs/USER_GUIDE.md)
+- [Developer Guide](docs/DEVELOPER.md)
+- [Contribution Guidelines](CONTRIBUTING.md)
+## Fitur Utama Modul
 
-## 📊 Database Schema
+### 1. Manajemen Data Penduduk
+- Pencatatan identitas lengkap dengan NIK
+- Profil keluarga dan hubungan keluarga
+- Tracking status kependudukan
+- Export data demografis
 
-Aplikasi menggunakan multiple tables untuk berbagai modul:
-- `users` - Data pengguna & autentikasi
-- `identities` - Data identitas penduduk
-- `courses` - Data kursus
-- `events` - Event desa
-- `news` - Berita dan pengumuman
-- Dan lebih banyak lagi...
+### 2. Surat-Menyurat
+- Template surat siap pakai
+- Nomor surat otomatis
+- Tracking status permohonan
+- Digital signature support
 
-Lihat [database/migrations/](database/migrations/) untuk schema detail.
+### 3. Manajemen Event
+- Calendaring acara desa
+- Participant management
+- Resource allocation
+- Event reporting
 
-## 🧪 Testing
+### 4. Sistem Berita
+- Publikasi berita desa
+- Kategori dan tagging
+- Media management
+- Public comments moderation
 
-Jalankan test suite:
+### 5. Dashboard & Analytics
+- Real-time statistics
+- Interactive charts
+- Custom reports
+- Data export (Excel, PDF)
+
+### 6. Regulasi & Kebijakan
+- Document repository
+- Version control
+- Access management
+- Full-text search
+
+## Konfigurasi Awal
+
+### Environment Setup
+
+Setelah instalasi, konfigurasi file `.env`:
+
+```env
+APP_NAME="Sistem Informasi Desa"
+APP_URL=http://localhost:8000
+APP_DEBUG=true  # Set false untuk production
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_DATABASE=sistem_desa
+DB_USERNAME=root
+DB_PASSWORD=
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_FROM_ADDRESS=noreply@sistemdesa.id
+```
+
+### Default Admin User
+
+Setelah seed, gunakan credentials berikut:
+- **Email**: admin@sistemdesa.id
+- **Password**: password
+
+**PENTING**: Ubah password admin saat first login!
+
+## Database Migrations
+
+Struktur database utama:
+
+| Tabel | Deskripsi |
+|-------|-----------|
+| `users` | Akun pengguna sistem |
+| `identities` | Data identitas penduduk |
+| `events` | Calendaring acara |
+| `news` | Publikasi berita |
+| `regulations` | Dokumen peraturan |
+| `letters` | Template & tracking surat |
+| `categories` | Kategori konten |
+
+Lihat [database/migrations/](database/migrations/) untuk schema lengkap.
+
+## Testing
+
+Jalankan test suite untuk memastikan semua berfungsi:
+
 ```bash
-# Unit tests
+# Jalankan semua test
 php artisan test
 
-# Feature tests
-php artisan test tests/Feature
+# Test fitur tertentu
+php artisan test tests/Feature/UserTest.php
 
-# Dengan coverage report
+# Generate coverage report
 php artisan test --coverage
 ```
 
-## 🐛 Troubleshooting
+## Debugging & Troubleshooting
 
-### Database Connection Error
+### Issue: Connection Refused
+
 ```bash
-# Cek database configuration
+# Verify database configuration
 php artisan tinker
 >>> DB::connection()->getPDO();
 ```
 
-### Missing Storage Folder
+### Issue: Storage Link Not Found
+
 ```bash
+# Create symbolic link
 php artisan storage:link
 ```
 
-### Cache Issues
+### Issue: Cache/Config Stale
+
 ```bash
+# Clear all caches
 php artisan cache:clear
 php artisan config:clear
 php artisan view:clear
+php artisan route:clear
 ```
 
-## 🤝 Contributing
+### Enable Debug Mode
 
-Kontribusi sangat diterima! Silakan ikuti panduan di [CONTRIBUTING.md](CONTRIBUTING.md)
+Untuk development, set di `.env`:
+```
+APP_DEBUG=true
+```
 
-### Proses Kontribusi:
-1. Fork repository
-2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Buka Pull Request
+## Best Practices
 
-## 📋 Roadmap
+- **Always use migrations** untuk database changes
+- **Commit regularly** dengan meaningful messages
+- **Write tests** untuk fitur baru
+- **Follow Laravel conventions** untuk consistency
+- **Use environment variables** untuk sensitive data
+- **Keep dependencies updated** dengan `composer update`
 
-- [ ] Mobile app (Flutter)
-- [ ] Advanced analytics & reporting
-- [ ] Payment gateway integration
-- [ ] Multi-language support
-- [ ] WhatsApp integration
-- [ ] Biometric authentication
-- [ ] Blockchain untuk verifikasi dokumen
+## Performance Tips
 
-## 📄 License
+```bash
+# Optimize autoloader
+composer dump-autoload --optimize
 
-Proyek ini dilisensikan di bawah [MIT License](LICENSE) - lihat file LICENSE untuk detail lengkap.
+# Cache routes & config
+php artisan config:cache
+php artisan route:cache
 
-## 👨‍💻 Author
+# Use Redis untuk caching
+# Edit .env: CACHE_DRIVER=redis
+```
+
+## Contributing & Support
+
+Kami membuka kontribusi dari komunitas!
+
+### Cara Berkontribusi:
+
+1. **Fork** repository ini
+2. **Clone** ke local machine
+3. **Buat branch** feature (`git checkout -b feature/YourFeature`)
+4. **Commit** perubahan (`git commit -m 'Add YourFeature'`)
+5. **Push** ke branch (`git push origin feature/YourFeature`)
+6. **Buat Pull Request** dengan deskripsi jelas
+
+### Guideline:
+- Follow PSR-12 coding standards
+- Tulis meaningful commit messages
+- Add unit tests untuk fitur baru
+- Update documentation jika diperlukan
+
+## Roadmap Pengembangan
+
+- [ ] Mobile Application (Flutter)
+- [ ] Advanced Analytics & Business Intelligence
+- [ ] Payment Gateway Integration
+- [ ] WhatsApp API Integration
+- [ ] Biometric Authentication
+- [ ] Blockchain Verification untuk dokumen
+- [ ] Multi-language Support
+- [ ] SMS Notification Service
+
+## License
+
+Proyek ini menggunakan lisensi [MIT License](LICENSE).
+
+Anda bebas menggunakan, memodifikasi, dan mendistribusikan kode ini sesuai dengan syarat MIT License.
+
+## Author & Support
 
 **Andri Wijaya**
 - GitHub: [@wijayadr](https://github.com/wijayadr)
+- Issues: [Report Bug](https://github.com/wijayadr/sistem-informasi-desa/issues)
+- Discussions: [Join Discussion](https://github.com/wijayadr/sistem-informasi-desa/discussions)
+
+---
+
+<div align="center">
+
+Made with ❤️ for Community
+
+[⬆ Back to top](#sistem-informasi-desa)
+
+</div>
 - Email: aaabbb242410@gmail.com
 
 ## 💬 Support & Contact
@@ -288,5 +437,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 #   S i s t e m - I n f o r m a s i - M a n a j e m e n - K u r s u s 
  
- #   s i s t e m - i n f o r m a s i - d e s a  
+ #   s i s t e m - i n f o r m a s i - d e s a 
+ 
  
